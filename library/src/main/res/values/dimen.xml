@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--顶部导航栏-->
+    <!-- 头部高度 -->
+    <dimen name="f_library_custom_view_ctv_height">44dp</dimen>
+    <!-- 头部左右图片宽度 -->
+    <dimen name="f_library_custom_view_ctv_lr_iv_width">44dp</dimen>
+    <!-- 头部左右图片内边距 -->
+    <dimen name="f_library_custom_view_ctv_lr_iv_padding">8dp</dimen>
+    <!-- 头部左右文字宽度 -->
+    <dimen name="f_library_custom_view_ctv_lr_tv_width">60dp</dimen>
+    <!-- 头部左右文字外边距 -->
+    <dimen name="f_library_custom_view_ctv_lr_tv_margin">8dp</dimen>
+    <!-- 头部左右文字大小 -->
+    <dimen name="f_library_custom_view_ctv_lr_tv_size">14sp</dimen>
+    <!-- 头部中部文字内边距 -->
+    <dimen name="f_library_custom_view_ctv_center_tv_padding">44dp</dimen>
+    <!-- 头部中部文字大小 -->
+    <dimen name="f_library_custom_view_ctv_center_tv_size">20sp</dimen>
+
+    <!--列表菜单-->
+    <dimen name="f_library_custom_view_mrv_item_height">44dp</dimen>
+    <dimen name="f_library_custom_view_mrv_item_padding_lr">8dp</dimen>
+    <dimen name="f_library_custom_view_mrv_item_icon_padding_right">8dp</dimen>
+    <dimen name="f_library_custom_view_mrv_item_text_size">16sp</dimen>
+</resources>

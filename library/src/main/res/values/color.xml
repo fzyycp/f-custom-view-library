@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--顶部导航栏-->
+    <!-- 头部背景颜色 -->
+    <color name="f_library_custom_view_ctv_bg_color">#f7f7f7</color>
+    <!-- 头部左右文字颜色 -->
+    <color name="f_library_custom_view_ctv_lr_tv_color">#3e3e3e</color>
+    <!-- 头部中间文字颜色 -->
+    <color name="f_library_custom_view_ctv_center_tv_color">#000000</color>
+
+    <!--列表菜单-->
+    <color name="f_library_custom_view_mrv_item_text_color">#000000</color>
+
+</resources>
