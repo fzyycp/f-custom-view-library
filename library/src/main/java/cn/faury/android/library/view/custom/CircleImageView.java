@@ -74,6 +74,7 @@ public class CircleImageView extends ImageView {
 
     /**
      * drawable转BitMap的方法
+     *
      * @param drawable 图片
      * @return bitmap
      */

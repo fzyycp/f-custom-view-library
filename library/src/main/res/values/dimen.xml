@@ -19,8 +19,16 @@
     <dimen name="f_library_custom_view_ctv_center_tv_size">20sp</dimen>
 
     <!--列表菜单-->
+    <!--列表项高度-->
     <dimen name="f_library_custom_view_mrv_item_height">44dp</dimen>
+    <!--列表项的padding-left和padding-right属性-->
     <dimen name="f_library_custom_view_mrv_item_padding_lr">8dp</dimen>
-    <dimen name="f_library_custom_view_mrv_item_icon_padding_right">8dp</dimen>
+    <!--列表项左侧图标的margin-right属性-->
+    <dimen name="f_library_custom_view_mrv_item_icon_iv_mr">8dp</dimen>
+    <!--列表项右侧图标的margin-left属性-->
+    <dimen name="f_library_custom_view_mrv_item_more_iv_ml">8dp</dimen>
+    <!--列表项文字大小-->
     <dimen name="f_library_custom_view_mrv_item_text_size">16sp</dimen>
+    <!--列表项placehold文字大小-->
+    <dimen name="f_library_custom_view_mrv_item_place_size">14sp</dimen>
 </resources>

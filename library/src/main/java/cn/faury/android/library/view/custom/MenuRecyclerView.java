@@ -20,7 +20,6 @@ import android.widget.TextView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -63,48 +62,49 @@ public class MenuRecyclerView extends RelativeLayout {
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
         initAttrs(attrs);
 
-
-        adapter = new Adapter(this.context, new ArrayList<Item>(), true, null);
+        adapter = new Adapter(this.context, new ArrayList<Item>(), null);
         recyclerView.setAdapter(adapter);
     }
 
     /**
      * 初始化配置参数
+     *
      * @param attrs xml配置参数
      */
-    private void initAttrs(@Nullable AttributeSet attrs){
-        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.MenuRecyclerView);
+    private void initAttrs(@Nullable AttributeSet attrs) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MenuRecyclerView);
         boolean animator = typedArray.getBoolean(R.styleable.MenuRecyclerView_animator, true);
         if (animator) {
             recyclerView.setItemAnimator(new DefaultItemAnimator());
         }
 
-        int decoration = typedArray.getInt(R.styleable.MenuRecyclerView_decoration,-1);
-        if(decoration==DividerItemDecoration.HORIZONTAL){
+        int decoration = typedArray.getInt(R.styleable.MenuRecyclerView_decoration, -1);
+        if (decoration == DividerItemDecoration.HORIZONTAL) {
             recyclerView.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL));
-        } else if(decoration==DividerItemDecoration.VERTICAL){
+        } else if (decoration == DividerItemDecoration.VERTICAL) {
             recyclerView.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
         }
     }
 
     /**
-     * 初始化数据
+     * 设置监听器
+     *
+     * @param onMenuItemClickListener 点击监听器
+     * @return 当前对象
      */
-    public void initItem(List<Item> items, boolean showIcon, OnMenuItemClickListener onMenuItemClickListener) {
-        adapter.items.addAll(items);
+    public MenuRecyclerView onMenuItemClick(OnMenuItemClickListener onMenuItemClickListener) {
         adapter.onMenuItemClickListener = onMenuItemClickListener;
-        adapter.showIcon = showIcon;
-        adapter.notifyDataSetChanged();
+        return this;
     }
 
     /**
      * 添加数据项
      *
      * @param items 数据项
+     * @return 当前对象
      */
     public MenuRecyclerView addItem(List<Item> items) {
         adapter.items.addAll(items);
-        adapter.notifyDataSetChanged();
         return this;
     }
 
@@ -112,18 +112,35 @@ public class MenuRecyclerView extends RelativeLayout {
      * 添加数据项
      *
      * @param item 数据项
+     * @return 当前对象
      */
     public MenuRecyclerView addItem(Item item) {
-        this.addItem(Arrays.asList(item));
+        adapter.items.add(item);
         return this;
     }
 
     /**
      * 清空数据项
+     *
+     * @return 当前对象
      */
-    public void clearItem() {
+    public MenuRecyclerView clearItem() {
         adapter.items.clear();
+        return this;
+    }
+
+    /**
+     * 显示改变
+     */
+    public void notifyDataSetChanged() {
         adapter.notifyDataSetChanged();
+    }
+
+    /**
+     * 菜单项点击事件
+     */
+    public interface OnMenuItemClickListener {
+        void onMenuItemClick(int position, Item item);
     }
 
     /**
@@ -142,11 +159,6 @@ public class MenuRecyclerView extends RelativeLayout {
         List<Item> items;
 
         /**
-         * 是否显示图标
-         */
-        boolean showIcon;
-
-        /**
          * 单击事件
          */
         OnMenuItemClickListener onMenuItemClickListener;
@@ -156,13 +168,11 @@ public class MenuRecyclerView extends RelativeLayout {
          *
          * @param context                 上下文
          * @param items                   列表项
-         * @param showIcon                是否显示图标
          * @param onMenuItemClickListener 菜单点击事件
          */
-        public Adapter(Context context, List<Item> items, boolean showIcon, OnMenuItemClickListener onMenuItemClickListener) {
+        public Adapter(Context context, List<Item> items, OnMenuItemClickListener onMenuItemClickListener) {
             this.context = context;
             this.items = (items == null ? new ArrayList<Item>() : items);
-            this.showIcon = showIcon;
             this.onMenuItemClickListener = onMenuItemClickListener;
         }
 
@@ -175,24 +185,41 @@ public class MenuRecyclerView extends RelativeLayout {
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
             final Item item = this.items.get(position);
-            int resId = item.getIcon();
-            if (showIcon && resId > 0) {
+            // 图标
+            if (item.isShowIcon()) {
                 holder.icon.setVisibility(View.VISIBLE);
-                holder.icon.setImageResource(resId);
+                if (item.getIcon() > 0) {
+                    holder.icon.setImageResource(item.getIcon());
+                }
             } else {
                 holder.icon.setVisibility(View.GONE);
             }
+
+            // 菜单文本
             holder.text.setText(item.getText());
 
-            final int pos = holder.getAdapterPosition();
-            holder.viewGroup.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onMenuItemClickListener != null) {
-                        onMenuItemClickListener.onMenuItemClick(pos, item);
-                    }
+            // 右侧图标
+            if (item.isShowMore()) {
+                holder.more.setVisibility(View.VISIBLE);
+                if (item.getMore() > 0) {
+                    holder.more.setImageResource(item.getMore());
                 }
-            });
+            }
+            // placehold内容
+            if (item.getPlace() > 0) {
+                holder.place.setText(item.getPlace());
+            }
+
+            final int pos = holder.getAdapterPosition();
+            holder.viewGroup.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (onMenuItemClickListener != null) {
+                                onMenuItemClickListener.onMenuItemClick(pos, item);
+                            }
+                        }
+                    });
         }
 
         @Override
@@ -207,13 +234,17 @@ public class MenuRecyclerView extends RelativeLayout {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ViewGroup viewGroup;
         ImageView icon;
+        ImageView more;
         TextView text;
+        TextView place;
 
         ViewHolder(View itemView) {
             super(itemView);
             viewGroup = (ViewGroup) itemView;
-            icon = itemView.findViewById(R.id.f_library_custom_view_mrv_item_icon);
-            text = itemView.findViewById(R.id.f_library_custom_view_mrv_item_text);
+            icon = itemView.findViewById(R.id.f_library_custom_view_mrv_item_icon_iv);
+            more = itemView.findViewById(R.id.f_library_custom_view_mrv_item_more_iv);
+            text = itemView.findViewById(R.id.f_library_custom_view_mrv_item_text_tv);
+            place = itemView.findViewById(R.id.f_library_custom_view_mrv_item_place_tv);
         }
     }
 
@@ -225,18 +256,37 @@ public class MenuRecyclerView extends RelativeLayout {
         /**
          * 菜单ID
          */
-        private int id;
+        private int id = -1;
 
         /**
          * 菜单图片
          */
-        private int icon;
+        private int icon = -1;
 
         /**
          * 菜单内容
          */
-        private int text;
+        private int text = -1;
 
+        /**
+         * 菜单右侧更多图标
+         */
+        private int more = -1;
+
+        /**
+         * 菜单placehold内容
+         */
+        private int place = -1;
+
+        /**
+         * 显示图标
+         */
+        private boolean showIcon = true;
+
+        /**
+         * 显示更多按钮
+         */
+        private boolean showMore = false;
 
         /**
          * 构造函数
@@ -253,13 +303,67 @@ public class MenuRecyclerView extends RelativeLayout {
          * 构造函数
          *
          * @param id     菜单ID
-         * @param iconId 图标ID
+         * @param iconId 图标ID(小于等于0不显示)
          * @param text   菜单内容ID
          */
         public Item(@IdRes int id, @DrawableRes int iconId, @StringRes int text) {
             this.id = id;
-            this.icon = iconId;
+            if (iconId > 0) {
+                this.icon = iconId;
+                showIcon = true;
+            } else {
+                showIcon = false;
+            }
             this.text = text;
+        }
+
+        /**
+         * 构造函数
+         *
+         * @param id       菜单ID
+         * @param iconId   图标ID(小于等于0不显示)
+         * @param text     菜单内容ID
+         * @param showDefaultMore 显示默认更多按钮
+         * @param place    placehold内容
+         */
+        public Item(@IdRes int id, @DrawableRes int iconId, @StringRes int text, boolean showDefaultMore, @StringRes int place) {
+            this.id = id;
+            if (iconId > 0) {
+                this.icon = iconId;
+                showIcon = true;
+            } else {
+                showIcon = false;
+            }
+            this.text = text;
+            this.showMore = showDefaultMore;
+            this.place = place;
+        }
+
+        /**
+         * 构造函数
+         *
+         * @param id     菜单ID
+         * @param iconId 图标ID(小于等于0不显示)
+         * @param text   菜单内容ID
+         * @param moreId 更多按钮ID(小于等于0不显示)
+         * @param place  placehold内容
+         */
+        public Item(@IdRes int id, @DrawableRes int iconId, @StringRes int text, @DrawableRes int moreId, @StringRes int place) {
+            this.id = id;
+            if (iconId > 0) {
+                this.icon = iconId;
+                showIcon = true;
+            } else {
+                showIcon = false;
+            }
+            this.text = text;
+            if (moreId > 0) {
+                this.more = moreId;
+                showMore = true;
+            } else {
+                showMore = false;
+            }
+            this.place = place;
         }
 
         @IdRes
@@ -270,19 +374,29 @@ public class MenuRecyclerView extends RelativeLayout {
         @DrawableRes
         public int getIcon() {
             return icon;
+        }
 
+        @DrawableRes
+        public int getMore() {
+            return more;
         }
 
         @StringRes
         public int getText() {
             return text;
         }
-    }
 
-    /**
-     * 菜单项点击事件
-     */
-    public interface OnMenuItemClickListener {
-        void onMenuItemClick(int position, Item item);
+        @StringRes
+        public int getPlace() {
+            return place;
+        }
+
+        public boolean isShowIcon() {
+            return showIcon;
+        }
+
+        public boolean isShowMore() {
+            return showMore;
+        }
     }
 }

@@ -1,27 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/f_library_custom_view_mrv_item_height"
-    android:gravity="center_vertical"
     android:paddingStart="@dimen/f_library_custom_view_mrv_item_padding_lr"
     android:paddingLeft="@dimen/f_library_custom_view_mrv_item_padding_lr"
     android:paddingRight="@dimen/f_library_custom_view_mrv_item_padding_lr"
     android:paddingEnd="@dimen/f_library_custom_view_mrv_item_padding_lr">
 
     <ImageView
-        android:id="@+id/f_library_custom_view_mrv_item_icon"
+        android:id="@+id/f_library_custom_view_mrv_item_icon_iv"
+        android:src="@drawable/f_library_custom_view_mrv_item_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
-        android:layout_marginRight="@dimen/f_library_custom_view_mrv_item_icon_padding_right"
-        android:layout_marginEnd="@dimen/f_library_custom_view_mrv_item_icon_padding_right"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginRight="@dimen/f_library_custom_view_mrv_item_icon_iv_mr"
+        android:layout_marginEnd="@dimen/f_library_custom_view_mrv_item_icon_iv_mr"
         android:contentDescription="@null" />
-    <TextView
-        android:id="@+id/f_library_custom_view_mrv_item_text"
+    <ImageView
+        android:id="@+id/f_library_custom_view_mrv_item_more_iv"
+        android:src="@drawable/f_library_custom_view_mrv_item_more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="@dimen/f_library_custom_view_mrv_item_more_iv_ml"
+        android:layout_marginStart="@dimen/f_library_custom_view_mrv_item_more_iv_ml"
+        android:contentDescription="@null" />
+    <TextView
+        android:id="@+id/f_library_custom_view_mrv_item_text_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/f_library_custom_view_mrv_item_icon_iv"
+        android:layout_toEndOf="@+id/f_library_custom_view_mrv_item_icon_iv"
+        android:layout_toLeftOf="@+id/f_library_custom_view_mrv_item_more_iv"
+        android:layout_toStartOf="@+id/f_library_custom_view_mrv_item_more_iv"
         android:singleLine="true"
         android:lines="1"
         android:textColor="@color/f_library_custom_view_mrv_item_text_color"
-        android:textSize="@dimen/f_library_custom_view_mrv_item_text_size"/>
-</LinearLayout>
+        android:textSize="@dimen/f_library_custom_view_mrv_item_text_size" />
+    <TextView
+        android:id="@+id/f_library_custom_view_mrv_item_place_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:gravity="end"
+        android:layout_toRightOf="@+id/f_library_custom_view_mrv_item_icon_iv"
+        android:layout_toEndOf="@+id/f_library_custom_view_mrv_item_icon_iv"
+        android:layout_toLeftOf="@+id/f_library_custom_view_mrv_item_more_iv"
+        android:layout_toStartOf="@+id/f_library_custom_view_mrv_item_more_iv"
+        android:singleLine="true"
+        android:lines="1"
+        android:textColor="@color/f_library_custom_view_mrv_item_place_color"
+        android:textSize="@dimen/f_library_custom_view_mrv_item_place_size" />
+</RelativeLayout>
