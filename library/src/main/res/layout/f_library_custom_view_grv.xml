@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/f_library_custom_view_grv_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <cn.faury.android.library.view.custom.group.weiget.SideBar
+        android:id="@+id/f_library_custom_view_grv_sidebar"
+        android:layout_width="@dimen/f_library_custom_view_grv_side_width"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/f_library_custom_view_grv_tips_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/f_library_custom_view_grv_tips_color"
+        android:textSize="@dimen/f_library_custom_view_grv_tips_size"
+        android:visibility="gone" />
+
+</RelativeLayout>

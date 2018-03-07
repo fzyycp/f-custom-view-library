@@ -40,7 +40,7 @@
         android:layout_centerInParent="true"
         android:paddingLeft="@dimen/f_library_custom_view_ctv_center_tv_padding"
         android:paddingRight="@dimen/f_library_custom_view_ctv_center_tv_padding"
-        android:text="@string/f_library_custom_view_ctv_center_default_text"
+        android:title="@string/f_library_custom_view_ctv_center_default_text"
         android:maxLines="1"
         android:textColor="@color/f_library_custom_view_ctv_center_tv_color"
         android:textSize="@dimen/f_library_custom_view_ctv_center_tv_size"/>

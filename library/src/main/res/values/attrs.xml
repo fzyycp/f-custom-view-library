@@ -1,7 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="MenuRecyclerView">
-        <attr name="animator" format="boolean" />
-        <attr name="decoration" format="integer"/>
+    <attr name="animator" format="boolean" />
+    <attr name="decoration" format="enum">
+        <enum name="HORIZONTAL" value="0" />
+        <enum name="VERTICAL" value="1" />
+    </attr>
+    <attr name="itemLineHeight" format="dimension" />
+    <attr name="itemTitleSize" format="dimension" />
+    <attr name="itemTitleColor" format="color" />
+    <attr name="itemPlaceSize" format="dimension" />
+    <attr name="itemPlaceColor" format="color" />
+
+    <declare-styleable name="ItemRecyclerView">
+        <attr name="animator" />
+        <attr name="decoration" />
+        <attr name="itemLineHeight" />
+        <attr name="itemTitleSize" />
+        <attr name="itemTitleColor" />
+        <attr name="itemPlaceSize" />
+        <attr name="itemPlaceColor" />
+    </declare-styleable>
+    <declare-styleable name="GroupRecyclerView">
+        <attr name="animator" />
+        <attr name="decoration" />
+        <attr name="itemLineHeight" />
+        <attr name="itemTitleSize" />
+        <attr name="itemTitleColor" />
+        <attr name="itemPlaceSize" />
+        <attr name="itemPlaceColor" />
+        <attr name="groupHeaderSuspensionShow" format="boolean" />
+        <attr name="groupHeaderHeight" format="dimension" />
+        <attr name="groupHeaderLeftPadding" format="dimension" />
+        <attr name="groupHeaderBgColor" format="color" />
+        <attr name="groupHeaderTitleSize" format="dimension" />
+        <attr name="groupHeaderTitleColor" format="color" />
+        <attr name="sideBarSize" format="dimension" />
+        <attr name="sideBarColor" format="color" />
+    </declare-styleable>
+    <!--<declare-styleable name="SideBar">-->
+        <!--<attr name="text_size" format="dimension" />-->
+        <!--<attr name="text_color" format="color" />-->
+        <!--<attr name="touch_color" format="color" />-->
+        <!--<attr name="untouch_color" format="color" />-->
+    <!--</declare-styleable>-->
+
+    <declare-styleable name="TabLayoutView">
+        <attr name="splitLineHeight" format="dimension" />
+        <attr name="splitLineColor" format="color" />
     </declare-styleable>
 </resources>

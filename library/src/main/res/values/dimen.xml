@@ -28,7 +28,14 @@
     <!--列表项右侧图标的margin-left属性-->
     <dimen name="f_library_custom_view_mrv_item_more_iv_ml">8dp</dimen>
     <!--列表项文字大小-->
-    <dimen name="f_library_custom_view_mrv_item_text_size">16sp</dimen>
+    <dimen name="f_library_custom_view_mrv_item_title_size">16sp</dimen>
     <!--列表项placehold文字大小-->
     <dimen name="f_library_custom_view_mrv_item_place_size">14sp</dimen>
+
+    <!--分组列表-->
+    <!--右侧sidebar宽度-->
+    <dimen name="f_library_custom_view_grv_side_width">24dp</dimen>
+    <!--提示文字大小-->
+    <dimen name="f_library_custom_view_grv_tips_size">60sp</dimen>
+
 </resources>

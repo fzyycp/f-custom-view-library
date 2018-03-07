@@ -81,60 +81,100 @@ public class CommonTopView extends RelativeLayout {
         }
     }
 
+    /**
+     * 获取布局Layout
+     * @return Layout
+     */
+    public RelativeLayout getLayout() {
+        return layout;
+    }
+
+    /**
+     * 获取左侧图片控件
+     * @return 图片控件
+     */
+    public ImageView getLeftIv() {
+        return leftIv;
+    }
+
+    /**
+     * 获取左侧文本控件
+     * @return 文本控件
+     */
+    public TextView getLeftTv() {
+        return leftTv;
+    }
+
+
+    /**
+     * 获取中间文本控件
+     * @return 中间控件
+     */
+    public TextView getCenterTv() {
+        return centerTv;
+    }
+
+    /**
+     * 获取右侧图片控件
+     * @return 图片控件
+     */
+    public ImageView getRightIv() {
+        return rightIv;
+    }
+
+    /**
+     * 获取右侧文本控件
+     * @return 文本控件
+     */
+    public TextView getRightTv() {
+        return rightTv;
+    }
 
     /**
      * 配置
      */
-    public static abstract class InitViews {
+    public interface InitViews {
 
         /**
          * 初始化整个导航栏
          *
          * @param layout 导航栏
          */
-        public void initCommonTopLayout(final RelativeLayout layout) {
-        }
-
+        void initCommonTopLayout(final RelativeLayout layout);
 
         /**
          * 初始化左侧图片按钮
          *
          * @param leftIv 左侧图片按钮
          */
-        public abstract void initCommonTopLeftIv(final ImageView leftIv);
+        void initCommonTopLeftIv(final ImageView leftIv);
 
         /**
          * 初始化左侧文字按钮
          *
          * @param leftTv 左侧文字按钮
          */
-        public void initCommonTopLeftTv(final TextView leftTv) {
-            leftTv.setVisibility(GONE);
-        }
+        void initCommonTopLeftTv(final TextView leftTv);
 
         /**
          * 初始化中间文字标题
          *
          * @param centerTv 中部文字标题
          */
-        public abstract void initCommonTopCenterTv(final TextView centerTv);
+        void initCommonTopCenterTv(final TextView centerTv);
 
         /**
          * 初始化右侧图片按钮
          *
          * @param rightIv 右侧图片按钮
          */
-        public void initCommonTopRightIv(final ImageView rightIv) {
-            rightIv.setVisibility(GONE);
-        }
+        void initCommonTopRightIv(final ImageView rightIv);
 
         /**
          * 初始化右侧文字按钮
          *
          * @param rightTv 右侧文字按钮
          */
-        public void initCommonTopRightTv(final TextView rightTv) {
-            rightTv.setVisibility(GONE);
-        }
+        void initCommonTopRightTv(final TextView rightTv);
     }
 }
