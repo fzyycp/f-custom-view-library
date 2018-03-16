@@ -2,20 +2,32 @@
 <resources>
     <!--顶部导航栏-->
     <!-- 头部背景颜色 -->
-    <color name="f_library_custom_view_ctv_bg_color">#f7f7f7</color>
+    <color name="f_cvl_common_top_view_bg_color">#f7f7f7</color>
     <!-- 头部左右文字颜色 -->
-    <color name="f_library_custom_view_ctv_lr_tv_color">#3e3e3e</color>
+    <color name="f_cvl_common_top_view_lr_tv_color">#3e3e3e</color>
     <!-- 头部中间文字颜色 -->
-    <color name="f_library_custom_view_ctv_center_tv_color">#000000</color>
+    <color name="f_cvl_common_top_view_center_tv_color">#000000</color>
 
     <!--列表菜单-->
     <!--列表项文字颜色-->
-    <color name="f_library_custom_view_mrv_item_title_color">#000000</color>
+    <color name="f_cvl_item_recycler_view_item_title_color">#000000</color>
     <!--列表项placehold颜色-->
-    <color name="f_library_custom_view_mrv_item_place_color">#c3c3c3</color>
+    <color name="f_cvl_item_recycler_view_item_place_color">#c3c3c3</color>
 
     <!--分组列表-->
     <!--分组列表提示文字颜色-->
-    <color name="f_library_custom_view_grv_tips_color">#ff0000</color>
+    <color name="f_cvl_group_recycler_view_tips_color">#ff0000</color>
+
+    <!--Popup menu-->
+    <!--菜单项文字颜色-->
+    <color name="f_cvl_popup_menu_item_text_color">#000000</color>
+
+    <!--ActionSheet-->
+    <!--标题栏字体颜色-->
+    <color name="f_cvl_action_sheet_title_color">#999999</color>
+    <!--列表项的文字颜色-->
+    <color name="f_cvl_action_sheet_list_item_color">#007aff</color>
+    <!--分割线颜色-->
+    <color name="f_cvl_action_sheet_list_divider_color">#c9c9c9</color>
 
 </resources>

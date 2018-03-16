@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/f_cvl_popup_menu_item_height"
+    android:gravity="center_vertical"
+    android:paddingStart="@dimen/f_cvl_popup_menu_item_padding_lr"
+    android:paddingLeft="@dimen/f_cvl_popup_menu_item_padding_lr"
+    android:paddingRight="@dimen/f_cvl_popup_menu_item_padding_lr"
+    android:paddingEnd="@dimen/f_cvl_popup_menu_item_padding_lr">
+
+    <ImageView
+        android:id="@+id/menu_item_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:layout_marginRight="@dimen/f_cvl_popup_menu_item_icon_padding_right"
+        android:layout_marginEnd="@dimen/f_cvl_popup_menu_item_icon_padding_right"
+        android:contentDescription="@null" />
+    <TextView
+        android:id="@+id/menu_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:lines="1"
+        android:textColor="@color/f_cvl_popup_menu_item_text_color"
+        android:textSize="@dimen/f_cvl_popup_menu_menu_item_text_size"/>
+</LinearLayout>

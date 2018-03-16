@@ -8,7 +8,7 @@
     <android.support.design.widget.TabLayout
         android:id="@+id/f_library_custom_view_tlv_tl"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/f_library_custom_view_ctv_height">
+        android:layout_height="@dimen/f_cvl_common_top_view_height">
     </android.support.design.widget.TabLayout>
     <view
         android:layout_width="match_parent"

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/f_cvl_action_sheet_item_height"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/f_cvl_action_sheet_list_item_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textColor="@color/f_cvl_action_sheet_list_item_color"
+        android:textSize="@dimen/f_cvl_action_sheet_list_item_size" />
+</LinearLayout>

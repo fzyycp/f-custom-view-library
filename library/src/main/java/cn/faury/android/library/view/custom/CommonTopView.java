@@ -53,7 +53,7 @@ public class CommonTopView extends RelativeLayout {
         super(context, attrs);
 
         // 加载布局文件
-        LayoutInflater.from(context).inflate(R.layout.f_library_custom_view_ctv, this);
+        LayoutInflater.from(context).inflate(R.layout.f_cvl_common_top_view, this);
 
         // 初始化控件
         layout = findViewById(R.id.f_library_custom_view_ctv_layout);

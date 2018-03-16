@@ -2,35 +2,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/f_library_custom_view_mrv_item_rl"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/f_library_custom_view_mrv_item_height"
-    android:paddingStart="@dimen/f_library_custom_view_mrv_item_padding_lr"
-    android:paddingLeft="@dimen/f_library_custom_view_mrv_item_padding_lr"
-    android:paddingRight="@dimen/f_library_custom_view_mrv_item_padding_lr"
-    android:paddingEnd="@dimen/f_library_custom_view_mrv_item_padding_lr">
+    android:layout_height="@dimen/f_cvl_item_recycler_view_item_height"
+    android:paddingStart="@dimen/f_cvl_item_recycler_view_item_padding_lr"
+    android:paddingLeft="@dimen/f_cvl_item_recycler_view_item_padding_lr"
+    android:paddingRight="@dimen/f_cvl_item_recycler_view_item_padding_lr"
+    android:paddingEnd="@dimen/f_cvl_item_recycler_view_item_padding_lr">
 
     <ImageView
         android:id="@+id/f_library_custom_view_mrv_item_icon_iv"
-        android:src="@drawable/f_library_custom_view_mrv_item_icon"
+        android:src="@drawable/f_cvl_item_recycler_view_item_icon"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:scaleType="center"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginRight="@dimen/f_library_custom_view_mrv_item_icon_iv_mr"
-        android:layout_marginEnd="@dimen/f_library_custom_view_mrv_item_icon_iv_mr"
+        android:layout_marginRight="@dimen/f_cvl_item_recycler_view_item_icon_iv_mr"
+        android:layout_marginEnd="@dimen/f_cvl_item_recycler_view_item_icon_iv_mr"
         android:contentDescription="@null" />
     <ImageView
         android:id="@+id/f_library_custom_view_mrv_item_more_iv"
-        android:src="@drawable/f_library_custom_view_mrv_item_more"
+        android:src="@drawable/f_cvl_item_recycler_view_item_more"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:scaleType="center"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginLeft="@dimen/f_library_custom_view_mrv_item_more_iv_ml"
-        android:layout_marginStart="@dimen/f_library_custom_view_mrv_item_more_iv_ml"
+        android:layout_marginLeft="@dimen/f_cvl_item_recycler_view_item_more_iv_ml"
+        android:layout_marginStart="@dimen/f_cvl_item_recycler_view_item_more_iv_ml"
         android:contentDescription="@null" />
     <TextView
         android:id="@+id/f_library_custom_view_mrv_item_title_tv"
@@ -43,8 +43,8 @@
         android:layout_toStartOf="@+id/f_library_custom_view_mrv_item_more_iv"
         android:singleLine="true"
         android:lines="1"
-        android:textColor="@color/f_library_custom_view_mrv_item_title_color"
-        android:textSize="@dimen/f_library_custom_view_mrv_item_title_size" />
+        android:textColor="@color/f_cvl_item_recycler_view_item_title_color"
+        android:textSize="@dimen/f_cvl_item_recycler_view_item_title_size" />
     <TextView
         android:id="@+id/f_library_custom_view_mrv_item_place_tv"
         android:layout_width="match_parent"
@@ -57,6 +57,6 @@
         android:layout_toEndOf="@+id/f_library_custom_view_mrv_item_icon_iv"
         android:singleLine="true"
         android:lines="1"
-        android:textColor="@color/f_library_custom_view_mrv_item_place_color"
-        android:textSize="@dimen/f_library_custom_view_mrv_item_place_size" />
+        android:textColor="@color/f_cvl_item_recycler_view_item_place_color"
+        android:textSize="@dimen/f_cvl_item_recycler_view_item_place_size" />
 </RelativeLayout>

@@ -336,7 +336,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(context).inflate(R.layout.f_library_custom_view_mrv_item, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.f_cvl_item_recycler_view_item, parent, false);
             initAttrs(view);
             return new ViewHolder(view);
         }

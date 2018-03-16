@@ -2,40 +2,68 @@
 <resources>
     <!--顶部导航栏-->
     <!-- 头部高度 -->
-    <dimen name="f_library_custom_view_ctv_height">44dp</dimen>
+    <dimen name="f_cvl_common_top_view_height">44dp</dimen>
     <!-- 头部左右图片宽度 -->
-    <dimen name="f_library_custom_view_ctv_lr_iv_width">44dp</dimen>
+    <dimen name="f_cvl_common_top_view_lr_iv_width">44dp</dimen>
     <!-- 头部左右图片内边距 -->
-    <dimen name="f_library_custom_view_ctv_lr_iv_padding">8dp</dimen>
+    <dimen name="f_cvl_common_top_view_lr_iv_padding">8dp</dimen>
     <!-- 头部左右文字宽度 -->
-    <dimen name="f_library_custom_view_ctv_lr_tv_width">60dp</dimen>
+    <dimen name="f_cvl_common_top_view_lr_tv_width">60dp</dimen>
     <!-- 头部左右文字外边距 -->
-    <dimen name="f_library_custom_view_ctv_lr_tv_margin">8dp</dimen>
+    <dimen name="f_cvl_common_top_view_lr_tv_margin">8dp</dimen>
     <!-- 头部左右文字大小 -->
-    <dimen name="f_library_custom_view_ctv_lr_tv_size">14sp</dimen>
+    <dimen name="f_cvl_common_top_view_lr_tv_size">14sp</dimen>
     <!-- 头部中部文字内边距 -->
-    <dimen name="f_library_custom_view_ctv_center_tv_padding">44dp</dimen>
+    <dimen name="f_cvl_common_top_view_center_tv_padding">44dp</dimen>
     <!-- 头部中部文字大小 -->
-    <dimen name="f_library_custom_view_ctv_center_tv_size">20sp</dimen>
+    <dimen name="f_cvl_common_top_view_center_tv_size">20sp</dimen>
 
     <!--列表菜单-->
     <!--列表项高度-->
-    <dimen name="f_library_custom_view_mrv_item_height">44dp</dimen>
+    <dimen name="f_cvl_item_recycler_view_item_height">44dp</dimen>
     <!--列表项的padding-left和padding-right属性-->
-    <dimen name="f_library_custom_view_mrv_item_padding_lr">8dp</dimen>
+    <dimen name="f_cvl_item_recycler_view_item_padding_lr">8dp</dimen>
     <!--列表项左侧图标的margin-right属性-->
-    <dimen name="f_library_custom_view_mrv_item_icon_iv_mr">8dp</dimen>
+    <dimen name="f_cvl_item_recycler_view_item_icon_iv_mr">8dp</dimen>
     <!--列表项右侧图标的margin-left属性-->
-    <dimen name="f_library_custom_view_mrv_item_more_iv_ml">8dp</dimen>
+    <dimen name="f_cvl_item_recycler_view_item_more_iv_ml">8dp</dimen>
     <!--列表项文字大小-->
-    <dimen name="f_library_custom_view_mrv_item_title_size">16sp</dimen>
+    <dimen name="f_cvl_item_recycler_view_item_title_size">16sp</dimen>
     <!--列表项placehold文字大小-->
-    <dimen name="f_library_custom_view_mrv_item_place_size">14sp</dimen>
+    <dimen name="f_cvl_item_recycler_view_item_place_size">14sp</dimen>
 
     <!--分组列表-->
     <!--右侧sidebar宽度-->
-    <dimen name="f_library_custom_view_grv_side_width">24dp</dimen>
+    <dimen name="f_cvl_group_recycler_view_side_width">24dp</dimen>
     <!--提示文字大小-->
-    <dimen name="f_library_custom_view_grv_tips_size">60sp</dimen>
+    <dimen name="f_cvl_group_recycler_view_tips_size">60sp</dimen>
+
+    <!--Popup menu-->
+    <!--菜单项高度-->
+    <dimen name="f_cvl_popup_menu_item_height">44dp</dimen>
+    <!--菜单项左右padding-->
+    <dimen name="f_cvl_popup_menu_item_padding_lr">8dp</dimen>
+    <!--菜单项图标右侧padding-->
+    <dimen name="f_cvl_popup_menu_item_icon_padding_right">8dp</dimen>
+    <!--菜单项文字大小-->
+    <dimen name="f_cvl_popup_menu_menu_item_text_size">16sp</dimen>
+
+    <!--ActionSheet-->
+    <!--列表项左右padding-->
+    <dimen name="f_cvl_action_sheet_padding_lr">16dp</dimen>
+    <!--列表项底部padding-->
+    <dimen name="f_cvl_action_sheet_padding_bottom">16dp</dimen>
+    <!--标题栏、列表项、取消项高度-->
+    <dimen name="f_cvl_action_sheet_item_height">44dp</dimen>
+    <!--分割线高度-->
+    <dimen name="f_cvl_action_sheet_divider_height">0.5dp</dimen>
+    <!--标题栏文字大小-->
+    <dimen name="f_cvl_action_sheet_title_size">20sp</dimen>
+    <!--取消按钮margin-top距离-->
+    <dimen name="f_cvl_action_sheet_cancel_mt">16dp</dimen>
+    <!--列表项文字大小-->
+    <dimen name="f_cvl_action_sheet_list_item_size">20sp</dimen>
+    <!--取消的文字大小-->
+    <dimen name="f_cvl_action_sheet_cancel_size">20sp</dimen>
 
 </resources>

@@ -71,7 +71,7 @@ public class GroupRecyclerView extends BaseRecyclerView {
      */
     @Override
     public int getLayoutId() {
-        return R.layout.f_library_custom_view_grv;
+        return R.layout.f_cvl_group_recycler_view;
     }
 
     /**
@@ -94,17 +94,17 @@ public class GroupRecyclerView extends BaseRecyclerView {
     public AttrConfigure getAttrs(AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.GroupRecyclerView);
         boolean animator = typedArray.getBoolean(R.styleable.GroupRecyclerView_animator, true);
-        float lineHeight = typedArray.getDimension(R.styleable.GroupRecyclerView_itemLineHeight, getResources().getDimension(R.dimen.f_library_custom_view_mrv_item_height));
-        float titleSize = typedArray.getDimension(R.styleable.GroupRecyclerView_itemTitleSize, getResources().getDimension(R.dimen.f_library_custom_view_mrv_item_title_size));
-        int titleColor = typedArray.getColor(R.styleable.GroupRecyclerView_itemTitleColor, getResources().getColor(R.color.f_library_custom_view_mrv_item_title_color));
-        float placeSize = typedArray.getDimension(R.styleable.GroupRecyclerView_itemPlaceSize, getResources().getDimension(R.dimen.f_library_custom_view_mrv_item_place_size));
-        int placeColor = typedArray.getColor(R.styleable.GroupRecyclerView_itemPlaceColor, getResources().getColor(R.color.f_library_custom_view_mrv_item_place_color));
+        float lineHeight = typedArray.getDimension(R.styleable.GroupRecyclerView_itemLineHeight, getResources().getDimension(R.dimen.f_cvl_item_recycler_view_item_height));
+        float titleSize = typedArray.getDimension(R.styleable.GroupRecyclerView_itemTitleSize, getResources().getDimension(R.dimen.f_cvl_item_recycler_view_item_title_size));
+        int titleColor = typedArray.getColor(R.styleable.GroupRecyclerView_itemTitleColor, getResources().getColor(R.color.f_cvl_item_recycler_view_item_title_color));
+        float placeSize = typedArray.getDimension(R.styleable.GroupRecyclerView_itemPlaceSize, getResources().getDimension(R.dimen.f_cvl_item_recycler_view_item_place_size));
+        int placeColor = typedArray.getColor(R.styleable.GroupRecyclerView_itemPlaceColor, getResources().getColor(R.color.f_cvl_item_recycler_view_item_place_color));
 
         this.groupHeaderSuspensionShow = typedArray.getBoolean(R.styleable.GroupRecyclerView_groupHeaderSuspensionShow, true);
         this.groupHeaderHeight = typedArray.getDimension(R.styleable.GroupRecyclerView_groupHeaderHeight, 24);
         this.groupHeaderLeftPadding = typedArray.getDimension(R.styleable.GroupRecyclerView_groupHeaderLeftPadding, 22);
         this.groupHeaderBgColor = typedArray.getColor(R.styleable.GroupRecyclerView_groupHeaderBgColor, Color.parseColor("#FFEEEEEE"));
-        this.groupHeaderTitleSize = typedArray.getDimension(R.styleable.GroupRecyclerView_groupHeaderTitleSize, getResources().getDimension(R.dimen.f_library_custom_view_mrv_item_title_size));
+        this.groupHeaderTitleSize = typedArray.getDimension(R.styleable.GroupRecyclerView_groupHeaderTitleSize, getResources().getDimension(R.dimen.f_cvl_item_recycler_view_item_title_size));
         this.groupHeaderTitleColor = typedArray.getColor(R.styleable.GroupRecyclerView_itemTitleColor, Color.parseColor("#FF999999"));
         return new AttrConfigure(animator, -1, lineHeight, titleSize, titleColor, placeSize, placeColor);
     }

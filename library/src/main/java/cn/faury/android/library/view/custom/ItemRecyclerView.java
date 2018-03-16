@@ -29,7 +29,7 @@ public class ItemRecyclerView extends BaseRecyclerView {
      */
     @Override
     public int getLayoutId() {
-        return R.layout.f_library_custom_view_mrv;
+        return R.layout.f_cvl_item_recycler_view;
     }
 
     /**
@@ -47,11 +47,11 @@ public class ItemRecyclerView extends BaseRecyclerView {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ItemRecyclerView);
         boolean animator = typedArray.getBoolean(R.styleable.ItemRecyclerView_animator, true);
         int decoration = typedArray.getInt(R.styleable.ItemRecyclerView_decoration, -1);
-        float lineHeight = typedArray.getDimension(R.styleable.ItemRecyclerView_itemLineHeight, getResources().getDimension(R.dimen.f_library_custom_view_mrv_item_height));
-        float titleSize = typedArray.getDimension(R.styleable.ItemRecyclerView_itemTitleSize, getResources().getDimension(R.dimen.f_library_custom_view_mrv_item_title_size));
-        int titleColor = typedArray.getColor(R.styleable.ItemRecyclerView_itemTitleColor, getResources().getColor(R.color.f_library_custom_view_mrv_item_title_color));
-        float placeSize = typedArray.getDimension(R.styleable.ItemRecyclerView_itemPlaceSize, getResources().getDimension(R.dimen.f_library_custom_view_mrv_item_place_size));
-        int placeColor = typedArray.getColor(R.styleable.ItemRecyclerView_itemPlaceColor, getResources().getColor(R.color.f_library_custom_view_mrv_item_place_color));
+        float lineHeight = typedArray.getDimension(R.styleable.ItemRecyclerView_itemLineHeight, getResources().getDimension(R.dimen.f_cvl_item_recycler_view_item_height));
+        float titleSize = typedArray.getDimension(R.styleable.ItemRecyclerView_itemTitleSize, getResources().getDimension(R.dimen.f_cvl_item_recycler_view_item_title_size));
+        int titleColor = typedArray.getColor(R.styleable.ItemRecyclerView_itemTitleColor, getResources().getColor(R.color.f_cvl_item_recycler_view_item_title_color));
+        float placeSize = typedArray.getDimension(R.styleable.ItemRecyclerView_itemPlaceSize, getResources().getDimension(R.dimen.f_cvl_item_recycler_view_item_place_size));
+        int placeColor = typedArray.getColor(R.styleable.ItemRecyclerView_itemPlaceColor, getResources().getColor(R.color.f_cvl_item_recycler_view_item_place_color));
         return new AttrConfigure(animator, decoration, lineHeight, titleSize, titleColor, placeSize, placeColor);
     }
 }

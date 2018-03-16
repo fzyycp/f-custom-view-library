@@ -48,4 +48,11 @@
         <attr name="splitLineHeight" format="dimension" />
         <attr name="splitLineColor" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="f_cvl_action_sheet_params">
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+    </declare-styleable>
+
+    <attr name="FCVLActionSheetThemeStyle" format="reference" />
 </resources>

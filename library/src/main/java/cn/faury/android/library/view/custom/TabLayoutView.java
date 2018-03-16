@@ -94,7 +94,7 @@ public class TabLayoutView extends LinearLayout {
      * @return 布局ID
      */
     public int getLayoutId() {
-        return R.layout.f_library_custom_view_tlv;
+        return R.layout.f_cvl_tab_layout_view;
     }
 
     /**

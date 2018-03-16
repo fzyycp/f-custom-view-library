@@ -10,7 +10,7 @@
 
     <cn.faury.android.library.view.custom.group.weiget.SideBar
         android:id="@+id/f_library_custom_view_grv_sidebar"
-        android:layout_width="@dimen/f_library_custom_view_grv_side_width"
+        android:layout_width="@dimen/f_cvl_group_recycler_view_side_width"
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
@@ -21,8 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textColor="@color/f_library_custom_view_grv_tips_color"
-        android:textSize="@dimen/f_library_custom_view_grv_tips_size"
+        android:textColor="@color/f_cvl_group_recycler_view_tips_color"
+        android:textSize="@dimen/f_cvl_group_recycler_view_tips_size"
         android:visibility="gone" />
 
 </RelativeLayout>
