@@ -9,6 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:textColor="@color/f_cvl_action_sheet_list_item_color"
-        android:textSize="@dimen/f_cvl_action_sheet_list_item_size" />
+        android:textColor="@color/f_cvl_action_sheet_item_color"
+        android:textSize="@dimen/f_cvl_action_sheet_item_size" />
 </LinearLayout>

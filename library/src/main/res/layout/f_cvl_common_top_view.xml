@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?><!-- 通用顶部视图 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/f_library_custom_view_ctv_layout"
+    android:id="@+id/f_cvl_common_top_view_layout"
     android:layout_width="match_parent"
     android:layout_height="@dimen/f_cvl_common_top_view_height"
     android:background="@color/f_cvl_common_top_view_bg_color">
 
     <ImageView
-        android:id="@+id/f_library_custom_view_ctv_left_iv"
+        android:id="@+id/f_cvl_common_top_view_left_iv"
         android:layout_width="@dimen/f_cvl_common_top_view_lr_iv_width"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
@@ -18,7 +18,7 @@
         android:layout_alignParentLeft="true" />
 
     <TextView
-        android:id="@+id/f_library_custom_view_ctv_left_tv"
+        android:id="@+id/f_cvl_common_top_view_left_tv"
         android:visibility="gone"
         android:maxWidth="@dimen/f_cvl_common_top_view_lr_tv_width"
         android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
         android:layout_marginLeft="@dimen/f_cvl_common_top_view_lr_tv_margin" />
 
     <TextView
-        android:id="@+id/f_library_custom_view_ctv_center_tv"
+        android:id="@+id/f_cvl_common_top_view_center_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -46,7 +46,7 @@
         android:textSize="@dimen/f_cvl_common_top_view_center_tv_size"/>
 
     <ImageView
-        android:id="@+id/f_library_custom_view_ctv_right_iv"
+        android:id="@+id/f_cvl_common_top_view_right_iv"
         android:visibility="gone"
         android:layout_width="@dimen/f_cvl_common_top_view_lr_iv_width"
         android:layout_height="match_parent"
@@ -58,7 +58,7 @@
         android:layout_alignParentRight="true" />
 
     <TextView
-        android:id="@+id/f_library_custom_view_ctv_right_tv"
+        android:id="@+id/f_cvl_common_top_view_right_tv"
         android:visibility="gone"
         android:maxWidth="@dimen/f_cvl_common_top_view_lr_tv_width"
         android:layout_width="wrap_content"

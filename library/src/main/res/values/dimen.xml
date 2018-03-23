@@ -50,9 +50,9 @@
 
     <!--ActionSheet-->
     <!--列表项左右padding-->
-    <dimen name="f_cvl_action_sheet_padding_lr">16dp</dimen>
+    <dimen name="f_cvl_action_sheet_padding_lr">8dp</dimen>
     <!--列表项底部padding-->
-    <dimen name="f_cvl_action_sheet_padding_bottom">16dp</dimen>
+    <dimen name="f_cvl_action_sheet_padding_bottom">8dp</dimen>
     <!--标题栏、列表项、取消项高度-->
     <dimen name="f_cvl_action_sheet_item_height">44dp</dimen>
     <!--分割线高度-->
@@ -60,10 +60,14 @@
     <!--标题栏文字大小-->
     <dimen name="f_cvl_action_sheet_title_size">20sp</dimen>
     <!--取消按钮margin-top距离-->
-    <dimen name="f_cvl_action_sheet_cancel_mt">16dp</dimen>
+    <dimen name="f_cvl_action_sheet_cancel_mt">8dp</dimen>
     <!--列表项文字大小-->
-    <dimen name="f_cvl_action_sheet_list_item_size">20sp</dimen>
+    <dimen name="f_cvl_action_sheet_item_size">20sp</dimen>
     <!--取消的文字大小-->
     <dimen name="f_cvl_action_sheet_cancel_size">20sp</dimen>
 
+    <!--Tab布局-->
+    <dimen name="f_cvl_tab_layout_view_tab_height">44dp</dimen>
+
 </resources>
+

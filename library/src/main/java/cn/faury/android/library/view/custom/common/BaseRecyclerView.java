@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -123,11 +122,11 @@ public abstract class BaseRecyclerView extends RelativeLayout {
     /**
      * 设置监听器
      *
-     * @param onMenuItemClickListener 点击监听器
+     * @param onItemClickListener 点击监听器
      * @return 当前对象
      */
-    public BaseRecyclerView onMenuItemClick(OnMenuItemClickListener onMenuItemClickListener) {
-        adapter.setOnMenuItemClickListener(onMenuItemClickListener);
+    public BaseRecyclerView onMenuItemClick(OnItemClickListener onItemClickListener) {
+        adapter.setOnItemClickListener(onItemClickListener);
         return this;
     }
 
@@ -316,7 +315,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
         /**
          * 单击事件
          */
-        private BaseRecyclerView.OnMenuItemClickListener onMenuItemClickListener;
+        private OnItemClickListener onItemClickListener;
 
         /**
          * 构造函数
@@ -324,12 +323,12 @@ public abstract class BaseRecyclerView extends RelativeLayout {
          * @param context                 上下文
          * @param typedArray              配置参数
          * @param items                   列表项
-         * @param onMenuItemClickListener 菜单点击事件
+         * @param onItemClickListener 菜单点击事件
          */
-        public Adapter(Context context, AttrConfigure typedArray, List<BaseRecyclerView.Item> items, BaseRecyclerView.OnMenuItemClickListener onMenuItemClickListener) {
+        public Adapter(Context context, AttrConfigure typedArray, List<BaseRecyclerView.Item> items, OnItemClickListener onItemClickListener) {
             this.context = context;
             this.items = (items == null ? new ArrayList<BaseRecyclerView.Item>() : items);
-            this.onMenuItemClickListener = onMenuItemClickListener;
+            this.onItemClickListener = onItemClickListener;
             this.attrConfigure = typedArray;
             this.holders = new LinkedHashMap<>(this.items.size());
         }
@@ -344,7 +343,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
         @Override
         public void onBindViewHolder(final BaseRecyclerView.ViewHolder holder, int position) {
             final BaseRecyclerView.Item item = this.items.get(position);
-            holder.id = item.id;
+            holder.id = item.getId();
             // 图标
             if (item.isShowIcon()) {
                 holder.iconIv.setVisibility(View.VISIBLE);
@@ -383,8 +382,8 @@ public abstract class BaseRecyclerView extends RelativeLayout {
                     new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if (onMenuItemClickListener != null) {
-                                onMenuItemClickListener.onMenuItemClick(pos, item, holder);
+                            if (onItemClickListener != null) {
+                                onItemClickListener.onItemClick(pos, item, holder);
                             }
                         }
                     });
@@ -432,12 +431,12 @@ public abstract class BaseRecyclerView extends RelativeLayout {
             return holders;
         }
 
-        public OnMenuItemClickListener getOnMenuItemClickListener() {
-            return onMenuItemClickListener;
+        public OnItemClickListener getOnItemClickListener() {
+            return onItemClickListener;
         }
 
-        public void setOnMenuItemClickListener(OnMenuItemClickListener onMenuItemClickListener) {
-            this.onMenuItemClickListener = onMenuItemClickListener;
+        public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+            this.onItemClickListener = onItemClickListener;
         }
 
         /**
@@ -453,12 +452,12 @@ public abstract class BaseRecyclerView extends RelativeLayout {
                 view.setLayoutParams(params);
 
                 // 列表项文本大小、颜色
-                TextView titleTv = view.findViewById(R.id.f_library_custom_view_mrv_item_title_tv);
+                TextView titleTv = view.findViewById(R.id.f_cvl_item_recycler_view_item_title_tv);
                 titleTv.setTextSize(TypedValue.COMPLEX_UNIT_PX, attrConfigure.titleSize);
                 titleTv.setTextColor(attrConfigure.titleColor);
 
                 // placehold文本大小、颜色
-                TextView placeTv = view.findViewById(R.id.f_library_custom_view_mrv_item_place_tv);
+                TextView placeTv = view.findViewById(R.id.f_cvl_item_recycler_view_item_place_tv);
                 placeTv.setTextSize(TypedValue.COMPLEX_UNIT_PX, attrConfigure.placeSize);
                 placeTv.setTextColor(attrConfigure.placeColor);
             }
@@ -479,10 +478,10 @@ public abstract class BaseRecyclerView extends RelativeLayout {
         ViewHolder(View itemView) {
             super(itemView);
             rootView = itemView;
-            iconIv = itemView.findViewById(R.id.f_library_custom_view_mrv_item_icon_iv);
-            moreIv = itemView.findViewById(R.id.f_library_custom_view_mrv_item_more_iv);
-            titleTv = itemView.findViewById(R.id.f_library_custom_view_mrv_item_title_tv);
-            placeTv = itemView.findViewById(R.id.f_library_custom_view_mrv_item_place_tv);
+            iconIv = itemView.findViewById(R.id.f_cvl_item_recycler_view_item_icon_iv);
+            moreIv = itemView.findViewById(R.id.f_cvl_item_recycler_view_item_more_iv);
+            titleTv = itemView.findViewById(R.id.f_cvl_item_recycler_view_item_title_tv);
+            placeTv = itemView.findViewById(R.id.f_cvl_item_recycler_view_item_place_tv);
         }
 
         /**
@@ -543,27 +542,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
     /**
      * 菜单项
      */
-    public static class Item implements Serializable {
-
-        /**
-         * 菜单ID
-         */
-        private int id = -1;
-
-        /**
-         * 菜单图片
-         */
-        private int icon = -1;
-
-        /**
-         * 菜单内容
-         */
-        private int title = -1;
-
-        /**
-         * 菜单内容文本
-         */
-        private String titleText = "";
+    public static class Item extends BaseItem {
 
         /**
          * 菜单右侧更多图标
@@ -579,11 +558,6 @@ public abstract class BaseRecyclerView extends RelativeLayout {
          * 菜单placehold内容文本
          */
         private String placeText = "";
-
-        /**
-         * 显示图标
-         */
-        private boolean showIcon = false;
 
         /**
          * 显示更多按钮
@@ -602,8 +576,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
          * @param title 菜单内容ID
          */
         public Item(int id, @StringRes int title) {
-            this.id = id;
-            this.title = title;
+            super(id,title);
         }
 
         /**
@@ -613,8 +586,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
          * @param title 菜单内容
          */
         public Item(int id, String title) {
-            this.id = id;
-            this.titleText = title;
+            super(id,title);
         }
 
         /**
@@ -625,8 +597,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
          * @param place placehold内容
          */
         public Item(int id, String title, String place) {
-            this.id = id;
-            this.titleText = title;
+            super(id,title);
             this.placeText = place;
         }
 
@@ -638,12 +609,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
          * @param title  菜单内容ID
          */
         public Item(int id, @DrawableRes int iconId, @StringRes int title) {
-            this.id = id;
-            if (iconId > 0) {
-                this.icon = iconId;
-                showIcon = true;
-            }
-            this.title = title;
+            super(id,iconId,title);
         }
 
         /**
@@ -654,12 +620,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
          * @param title  菜单内容
          */
         public Item(int id, @DrawableRes int iconId, String title) {
-            this.id = id;
-            if (iconId > 0) {
-                this.icon = iconId;
-                showIcon = true;
-            }
-            this.titleText = title;
+            super(id,iconId,title);
         }
 
         /**
@@ -672,12 +633,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
          * @param place           placehold内容
          */
         public Item(int id, @DrawableRes int iconId, @StringRes int title, boolean showDefaultMore, @StringRes int place) {
-            this.id = id;
-            if (iconId > 0) {
-                this.icon = iconId;
-                showIcon = true;
-            }
-            this.title = title;
+            super(id,iconId,title);
             this.showMore = showDefaultMore;
             this.place = place;
         }
@@ -692,12 +648,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
          * @param place           placehold内容
          */
         public Item(int id, @DrawableRes int iconId, String title, boolean showDefaultMore, String place) {
-            this.id = id;
-            if (iconId > 0) {
-                this.icon = iconId;
-                showIcon = true;
-            }
-            this.titleText = title;
+            super(id,iconId,title);
             this.showMore = showDefaultMore;
             this.placeText = place;
         }
@@ -712,12 +663,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
          * @param place  placehold内容
          */
         public Item(int id, @DrawableRes int iconId, @StringRes int title, @DrawableRes int moreId, @StringRes int place) {
-            this.id = id;
-            if (iconId > 0) {
-                this.icon = iconId;
-                showIcon = true;
-            }
-            this.title = title;
+            super(id,iconId,title);
             if (moreId > 0) {
                 this.more = moreId;
                 showMore = true;
@@ -737,12 +683,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
          * @param place  placehold内容
          */
         public Item(int id, @DrawableRes int iconId, @StringRes int title, @DrawableRes int moreId, String place) {
-            this.id = id;
-            if (iconId > 0) {
-                this.icon = iconId;
-                showIcon = true;
-            }
-            this.title = title;
+            super(id,iconId,title);
             if (moreId > 0) {
                 this.more = moreId;
                 showMore = true;
@@ -762,12 +703,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
          * @param place  placehold内容
          */
         public Item(int id, @DrawableRes int iconId, String title, @DrawableRes int moreId, String place) {
-            this.id = id;
-            if (iconId > 0) {
-                this.icon = iconId;
-                showIcon = true;
-            }
-            this.titleText = title;
+            super(id,iconId,title);
             if (moreId > 0) {
                 this.more = moreId;
                 showMore = true;
@@ -777,27 +713,9 @@ public abstract class BaseRecyclerView extends RelativeLayout {
             this.placeText = place;
         }
 
-        public int getId() {
-            return id;
-        }
-
-        @DrawableRes
-        public int getIcon() {
-            return icon;
-        }
-
         @DrawableRes
         public int getMore() {
             return more;
-        }
-
-        @StringRes
-        public int getTitle() {
-            return title;
-        }
-
-        public String getTitleText() {
-            return titleText;
         }
 
         public String getPlaceText() {
@@ -807,15 +725,6 @@ public abstract class BaseRecyclerView extends RelativeLayout {
         @StringRes
         public int getPlace() {
             return place;
-        }
-
-        /**
-         * 是否显示图标
-         *
-         * @return 是否显示
-         */
-        public boolean isShowIcon() {
-            return showIcon;
         }
 
         /**
@@ -834,7 +743,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
          * @return 当前对象
          */
         public BaseRecyclerView.Item setTitle(int title) {
-            this.title = title;
+            super.setTitle(title);
             return this;
         }
 
@@ -856,7 +765,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
          * @return 当前对象
          */
         public BaseRecyclerView.Item setTitleText(String title) {
-            this.titleText = title;
+            super.setTitleText(title);
             return this;
         }
 
@@ -892,7 +801,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
     /**
      * 菜单项点击事件
      */
-    public interface OnMenuItemClickListener {
-        void onMenuItemClick(int position, BaseRecyclerView.Item item, BaseRecyclerView.ViewHolder viewHolder);
+    public interface OnItemClickListener {
+        void onItemClick(int position, BaseRecyclerView.Item item, BaseRecyclerView.ViewHolder viewHolder);
     }
 }

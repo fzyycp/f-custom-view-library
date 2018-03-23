@@ -10,11 +10,11 @@
         android:id="@+id/f_cvl_action_sheet_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical"
         android:paddingBottom="@dimen/f_cvl_action_sheet_padding_bottom"
         android:paddingLeft="@dimen/f_cvl_action_sheet_padding_lr"
-        android:paddingRight="@dimen/f_cvl_action_sheet_padding_lr"
-        android:gravity="bottom"
-        android:orientation="vertical">
+        android:paddingRight="@dimen/f_cvl_action_sheet_padding_lr">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,6 +31,7 @@
                 android:textSize="@dimen/f_cvl_action_sheet_title_size" />
 
             <View
+                android:id="@+id/f_cvl_action_sheet_title_split_v"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/f_cvl_action_sheet_divider_height"
                 android:background="@color/f_cvl_action_sheet_list_divider_color" />
@@ -38,15 +39,14 @@
             <ListView
                 android:id="@+id/f_cvl_action_sheet_items_lv"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:cacheColorHint="@android:color/transparent"
                 android:divider="@color/f_cvl_action_sheet_list_divider_color"
                 android:dividerHeight="@dimen/f_cvl_action_sheet_divider_height"
                 android:listSelector="@android:color/transparent"
                 android:scrollbars="none" />
 
-            <android.support.v7.widget.GridLayout
-                xmlns:app="http://schemas.android.com/apk/res-auto"
+            <android.support.v7.widget.GridLayout xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/f_cvl_action_sheet_grid_gl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,11 +58,11 @@
         <TextView
             android:id="@+id/f_cvl_action_sheet_cancel_tv"
             android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/f_cvl_action_sheet_cancel_mt"
             android:layout_height="@dimen/f_cvl_action_sheet_item_height"
+            android:layout_marginTop="@dimen/f_cvl_action_sheet_cancel_mt"
             android:background="@drawable/f_cvl_action_sheet_shape_bg"
             android:gravity="center"
-            android:textColor="@android:color/holo_red_light"
+            android:textColor="@color/f_cvl_action_sheet_cancel_color"
             android:textSize="@dimen/f_cvl_action_sheet_cancel_size"
             android:visibility="gone" />
     </LinearLayout>

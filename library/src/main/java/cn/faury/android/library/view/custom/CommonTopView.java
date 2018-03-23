@@ -56,12 +56,12 @@ public class CommonTopView extends RelativeLayout {
         LayoutInflater.from(context).inflate(R.layout.f_cvl_common_top_view, this);
 
         // 初始化控件
-        layout = findViewById(R.id.f_library_custom_view_ctv_layout);
-        leftIv = findViewById(R.id.f_library_custom_view_ctv_left_iv);
-        leftTv = findViewById(R.id.f_library_custom_view_ctv_left_tv);
-        centerTv = findViewById(R.id.f_library_custom_view_ctv_center_tv);
-        rightIv = findViewById(R.id.f_library_custom_view_ctv_right_iv);
-        rightTv = findViewById(R.id.f_library_custom_view_ctv_right_tv);
+        layout = findViewById(R.id.f_cvl_common_top_view_layout);
+        leftIv = findViewById(R.id.f_cvl_common_top_view_left_iv);
+        leftTv = findViewById(R.id.f_cvl_common_top_view_left_tv);
+        centerTv = findViewById(R.id.f_cvl_common_top_view_center_tv);
+        rightIv = findViewById(R.id.f_cvl_common_top_view_right_iv);
+        rightTv = findViewById(R.id.f_cvl_common_top_view_right_tv);
     }
 
     /**

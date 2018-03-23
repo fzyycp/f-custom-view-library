@@ -26,7 +26,9 @@
     <!--标题栏字体颜色-->
     <color name="f_cvl_action_sheet_title_color">#999999</color>
     <!--列表项的文字颜色-->
-    <color name="f_cvl_action_sheet_list_item_color">#007aff</color>
+    <color name="f_cvl_action_sheet_item_color">#000000</color>
+    <!--取消项的文字颜色-->
+    <color name="f_cvl_action_sheet_cancel_color">#ff0000</color>
     <!--分割线颜色-->
     <color name="f_cvl_action_sheet_list_divider_color">#c9c9c9</color>
 

@@ -39,7 +39,7 @@ public class ItemRecyclerView extends BaseRecyclerView {
      */
     @Override
     public int getRecyclerViewId() {
-        return R.id.f_library_custom_view_mrv_rv;
+        return R.id.f_cvl_item_recycler_view_rv;
     }
 
     @Override

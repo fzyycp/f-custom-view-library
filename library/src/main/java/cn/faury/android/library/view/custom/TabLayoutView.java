@@ -2,6 +2,7 @@ package cn.faury.android.library.view.custom;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -70,8 +71,8 @@ public class TabLayoutView extends LinearLayout {
         LayoutInflater.from(context).inflate(getLayoutId(), this);
 
         // 初始化控件
-        tabLayout = findViewById(R.id.f_library_custom_view_tlv_tl);
-        viewPager = findViewById(R.id.f_library_custom_view_tlv_vp);
+        tabLayout = findViewById(R.id.f_cvl_tab_layout_view_tl);
+        viewPager = findViewById(R.id.f_cvl_tab_layout_view_vp);
         adapter = new Adapter(this.context, new ArrayList<Item>());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -179,11 +180,10 @@ public class TabLayoutView extends LinearLayout {
      */
     public static class Item implements Serializable {
         private int id;
-        private @LayoutRes
-        int layoutId;
-        private @StringRes
-        int title;
+        private @LayoutRes int layoutId;
+        private @StringRes int title;
         private String titleText;
+        private @DrawableRes int icon;
 
         public Item(int id, int layoutId, int title) {
             this.id = id;
@@ -195,6 +195,16 @@ public class TabLayoutView extends LinearLayout {
             this.id = id;
             this.layoutId = layoutId;
             this.titleText = title;
+        }
+
+        public Item(int id, int layoutId, int title,int icon) {
+            this(id, layoutId, title);
+            this.icon = icon;
+        }
+
+        public Item(int id, int layoutId, String title,int icon) {
+            this(id, layoutId, title);
+            this.icon = icon;
         }
 
         public int getId() {
@@ -230,6 +240,15 @@ public class TabLayoutView extends LinearLayout {
 
         public Item setTitleText(String titleText) {
             this.titleText = titleText;
+            return this;
+        }
+
+        public int getIcon() {
+            return icon;
+        }
+
+        public Item setIcon(int icon) {
+            this.icon = icon;
             return this;
         }
     }

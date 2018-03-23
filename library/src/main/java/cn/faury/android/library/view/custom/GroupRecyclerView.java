@@ -81,7 +81,7 @@ public class GroupRecyclerView extends BaseRecyclerView {
      */
     @Override
     public int getRecyclerViewId() {
-        return R.id.f_library_custom_view_grv_rv;
+        return R.id.f_cvl_group_recycler_view_rv;
     }
 
     /**
@@ -112,8 +112,8 @@ public class GroupRecyclerView extends BaseRecyclerView {
     @Override
     protected void initViews(AttributeSet attrs, AttrConfigure attsCfg) {
         super.initViews(attrs, attsCfg);
-        this.sideBar = findViewById(R.id.f_library_custom_view_grv_sidebar);
-        this.tipsTv = findViewById(R.id.f_library_custom_view_grv_tips_tv);
+        this.sideBar = findViewById(R.id.f_cvl_group_recycler_view_sidebar);
+        this.tipsTv = findViewById(R.id.f_cvl_group_recycler_view_tips_tv);
     }
 
     /**

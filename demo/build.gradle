@@ -30,6 +30,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation 'cn.faury.android.library:f-android-common-library:0.1.9'
     compile project(':library')
 
     // 依赖注入插件

@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/f_library_custom_view_tlv_layout"
+    android:id="@+id/f_cvl_tab_layout_view_layout_ll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <android.support.design.widget.TabLayout
-        android:id="@+id/f_library_custom_view_tlv_tl"
+        android:id="@+id/f_cvl_tab_layout_view_tl"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/f_cvl_common_top_view_height">
-    </android.support.design.widget.TabLayout>
-    <view
+        android:layout_height="@dimen/f_cvl_tab_layout_view_tab_height" />
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="0.2dp"/>
+        android:layout_height="0.2dp" />
+
     <android.support.v4.view.ViewPager
-        android:id="@+id/f_library_custom_view_tlv_vp"
+        android:id="@+id/f_cvl_tab_layout_view_vp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

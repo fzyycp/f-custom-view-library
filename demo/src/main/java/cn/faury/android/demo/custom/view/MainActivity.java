@@ -6,7 +6,7 @@ import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.faury.android.library.view.custom.ActionSheet;
+import cn.faury.android.library.common.util.ActivityUtils;
 
 public class MainActivity extends Activity {
 
@@ -17,44 +17,19 @@ public class MainActivity extends Activity {
         ButterKnife.bind(this);
     }
 
-    private void show(String message){
-        Toast.makeText(MainActivity.this,message,Toast.LENGTH_LONG).show();
+    private void show(String message) {
+        Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
     }
 
-    @OnClick(R.id.list_btn)
-    public void listBtnClick(){
-        ActionSheet.build(getFragmentManager())
-                .setType(ActionSheet.Builder.TYPE.LIST)
-                .setTitle("")
-                .setItems(new String[]{"菜单1", "菜单2", "菜单3", "菜单4"})
-                .setOnItemClickListener(new ActionSheet.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(int i) {
-                        show("select "+i);
-                    }
-                })
-                .setOnCancelListener(new ActionSheet.OnCancelListener() {
-                    @Override
-                    public void onCancelClick() {
-                        show("cancel");
-                    }
-                })
-                .show();
+
+    @OnClick(R.id.action_sheet_btn)
+    public void actionSheetBtnClick() {
+        ActivityUtils.startActivity(this, ActionSheetActivity.class,null);
     }
 
-    @OnClick(R.id.grid_btn)
-    public void gridBtnClick(){
-        ActionSheet.build(getFragmentManager())
-                .setType(ActionSheet.Builder.TYPE.GRID)
-                .setTitle("")
-                .setItems(new String[]{"菜单1", "菜单2"})
-                .setOnItemClickListener(new ActionSheet.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(int i) {
-                        show("select "+i);
-                    }
-                })
-                .setImages(new int[]{R.drawable.btn_login_qq, R.drawable.btn_login_weixin})
-                .show();
+    @OnClick(R.id.tab_layout_btn)
+    public void tabLayoutBtnClick() {
+        ActivityUtils.startActivity(this, TabLayoutActivity.class,null);
     }
+
 }

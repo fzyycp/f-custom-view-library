@@ -4,18 +4,13 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
 
-    <Button
-        android:id="@+id/action_sheet_btn"
-        android:text="ActionSheet"
+    <TextView
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
-
-    <Button
-        android:id="@+id/tab_layout_btn"
-        android:text="TabLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
 </LinearLayout>

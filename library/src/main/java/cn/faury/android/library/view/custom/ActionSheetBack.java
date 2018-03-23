@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 import android.support.v7.widget.GridLayout;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -30,7 +29,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.List;
 
 import cn.faury.android.library.common.util.CollectionsUtils;
@@ -42,16 +40,21 @@ import cn.faury.android.library.view.custom.common.BaseItem;
  * 底部弹出菜单
  */
 
-public class ActionSheet extends Fragment {
+public class ActionSheetBack extends Fragment {
 
-    private List<BaseItem> items = new ArrayList<>();
+    private List<BaseItem> items;
     private String titleText;
     private int title;
     private String cancelText;
     private int cancel;
-    private TYPE type = TYPE.LIST;
-    private OnItemClickListener onItemClickListener;
-    private OnCancelListener onCancelListener;
+    /**
+     * 弹出框类型：列表
+     */
+    public static final int ACTION_SHEET_TYPE_LIST = 1;
+    /**
+     * 弹出框类型：表格
+     */
+    public static final int ACTION_SHEET_TYPE_GRID = 2;
 
     //是否已经关闭
     boolean isDismiss = true;
@@ -61,6 +64,28 @@ public class ActionSheet extends Fragment {
     View rootView;
     //添加进入的第一个view
     View itemsView;
+
+    public static ActionSheetBack newListInstance(String title, String cancel, String[] items) {
+        ActionSheetBack fragment = new ActionSheetBack();
+        Bundle bundle = new Bundle();
+        bundle.putString("title", title);
+        bundle.putString("cancel", cancel);
+        bundle.putStringArray("items", items);
+        bundle.putInt("type", ACTION_SHEET_TYPE_LIST);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
+    public static ActionSheetBack newGridInstance(String title, String[] items, int[] images) {
+        ActionSheetBack fragment = new ActionSheetBack();
+        Bundle bundle = new Bundle();
+        bundle.putString("title", title);
+        bundle.putStringArray("items", items);
+        bundle.putIntArray("images", images);
+        bundle.putInt("type", ACTION_SHEET_TYPE_GRID);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Nullable
     @Override
@@ -94,29 +119,31 @@ public class ActionSheet extends Fragment {
                 dismiss();
             }
         });
-        // 配置参数
-        // 设置标题
-        TextView titleTv = rootView.findViewById(R.id.f_cvl_action_sheet_title_tv);
-        if (this.title > 0) {
-            titleTv.setText(this.title);
-            titleTv.setVisibility(View.VISIBLE);
-        } else if (StringUtils.isNotEmpty(this.titleText)) {
-            titleTv.setText(this.titleText);
-            titleTv.setVisibility(View.VISIBLE);
-        } else {
-            titleTv.setVisibility(View.GONE);
-        }
-        // 设置标题分割线
-        View titleSplitV = rootView.findViewById(R.id.f_cvl_action_sheet_title_split_v);
-        titleSplitV.setVisibility(titleTv.getVisibility());
 
-        switch (type) {
-            case LIST:
-                initListViews();
-                break;
-            case GRID:
-                initGridViews();
-                break;
+        // 配置参数
+        Bundle arguments = this.getArguments();
+        if (arguments != null) {
+            // 设置标题
+            TextView titleTv = rootView.findViewById(R.id.f_cvl_action_sheet_title_tv);
+            String title = arguments.getString("title", "");
+            if (StringUtils.isNotEmpty(title)) {
+                titleTv.setText(title);
+                titleTv.setVisibility(View.VISIBLE);
+            } else {
+                titleTv.setVisibility(View.GONE);
+            }
+            // 设置标题分割线
+            View titleSplitV = rootView.findViewById(R.id.f_cvl_action_sheet_title_split_v);
+            titleSplitV.setVisibility(titleTv.getVisibility());
+
+            switch (arguments.getInt("type")) {
+                case ACTION_SHEET_TYPE_LIST:
+                    initListViews();
+                    break;
+                case ACTION_SHEET_TYPE_GRID:
+                    initGridViews();
+                    break;
+            }
         }
     }
 
@@ -126,8 +153,10 @@ public class ActionSheet extends Fragment {
         gridGl.setVisibility(View.VISIBLE);
         if (getActivity() != null) {
             int width = (getScreenWidth(getActivity()) - WindowUtils.dip2px(getActivity(), 20)) / 4;
-            if (!CollectionsUtils.isEmpty(items)) {
-                for (int i = 0; i < items.size(); i++) {
+            String[] items = getArguments().getStringArray("items");
+            int[] images = getArguments().getIntArray("images");
+            if (!CollectionsUtils.isEmpty(items) && images != null && images.length > 0) {
+                for (int i = 0; i < items.length; i++) {
                     final int i_ = i;
                     View viewChild = LayoutInflater.from(getActivity()).inflate(R.layout.f_cvl_action_sheet_grid_item, null, false);
                     LinearLayout gridItemLl = viewChild.findViewById(R.id.f_cvl_action_sheet_grid_item_ll);
@@ -135,20 +164,16 @@ public class ActionSheet extends Fragment {
                         @Override
                         public void onClick(View v) {
                             if (onItemClickListener != null) {
-                                onItemClickListener.onItemClick(i_, items.get(i_));
+                                onItemClickListener.onItemClick(i_);
                             }
                             dismiss();
                         }
                     });
                     ImageView gridItemIconIv = viewChild.findViewById(R.id.f_cvl_action_sheet_grid_item_icon_iv);
-                    gridItemIconIv.setImageResource(items.get(i).getIcon());
+                    gridItemIconIv.setImageResource(images[i]);
 
                     TextView gridItemTitleTv = viewChild.findViewById(R.id.f_cvl_action_sheet_grid_item_title_tv);
-                    if (items.get(i).getTitle() > 0) {
-                        gridItemTitleTv.setText(items.get(i).getTitle());
-                    } else {
-                        gridItemTitleTv.setText(items.get(i).getTitleText());
-                    }
+                    gridItemTitleTv.setText(items[i]);
 
                     GridLayout.LayoutParams params = new GridLayout.LayoutParams();
                     params.width = width;
@@ -163,14 +188,11 @@ public class ActionSheet extends Fragment {
 
     // 初始化列表框
     private void initListViews() {
-        if (this.cancel > 0 || StringUtils.isNotEmpty(this.cancelText)) {
+        String cancel = getArguments().getString("cancel");
+        if (StringUtils.isNotEmpty(cancel)) {
             TextView cancelTv = rootView.findViewById(R.id.f_cvl_action_sheet_cancel_tv);
             cancelTv.setVisibility(View.VISIBLE);
-            if (this.cancel>0){
-                cancelTv.setText(cancel);
-            } else {
-                cancelTv.setText(this.cancelText);
-            }
+            cancelTv.setText(cancel);
             cancelTv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -184,6 +206,21 @@ public class ActionSheet extends Fragment {
 
         if (getActivity() != null) {
             ListView itemsLv = rootView.findViewById(R.id.f_cvl_action_sheet_items_lv);
+            // 计算高度
+//            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) itemsLv.getLayoutParams();
+            String[] items = getArguments().getStringArray("items");
+//            float itemHeight = getResources().getDimension(R.dimen.f_cvl_action_sheet_item_height);
+//            float dividerHeight = getResources().getDimension(R.dimen.f_cvl_action_sheet_divider_height);
+//            float paddingBottom = getResources().getDimension(R.dimen.f_cvl_action_sheet_padding_bottom);
+//            float cancelMt = getResources().getDimension(R.dimen.f_cvl_action_sheet_cancel_mt);
+//            int maxHeight = getScreenHeight(getActivity()) - getStatusBarHeight(getActivity()) - WindowUtils.dip2px(getActivity(), (itemHeight + paddingBottom + cancelMt)) - WindowUtils.dip2px(getActivity(), (itemHeight + dividerHeight));
+//            int dateHeight = WindowUtils.dip2px(getActivity(), (itemHeight + dividerHeight) * items.length);
+//            if (maxHeight < dateHeight) {
+//                params.height = maxHeight;
+//            } else {
+//                params.height = WindowUtils.dip2px(getActivity(), (itemHeight + dividerHeight) * items.length);
+//            }
+//            itemsLv.setLayoutParams(params);
 
             Adapter adapter = new Adapter(getActivity(), items);
             itemsLv.setAdapter(adapter);
@@ -191,7 +228,7 @@ public class ActionSheet extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     if (onItemClickListener != null) {
-                        onItemClickListener.onItemClick(position,items.get(position));
+                        onItemClickListener.onItemClick(position);
                         dismiss();
                     }
                 }
@@ -209,7 +246,7 @@ public class ActionSheet extends Fragment {
             @Override
             public void run() {
                 FragmentTransaction transaction = manager.beginTransaction();
-                transaction.add(ActionSheet.this, tag);
+                transaction.add(ActionSheetBack.this, tag);
                 transaction.addToBackStack(null);
                 transaction.commitAllowingStateLoss();
             }
@@ -228,7 +265,7 @@ public class ActionSheet extends Fragment {
                 getChildFragmentManager().popBackStack();
                 try {
                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.remove(ActionSheet.this);
+                    transaction.remove(ActionSheetBack.this);
                     transaction.commitAllowingStateLoss();
                 } catch (Exception ignore) {
                 }
@@ -248,8 +285,8 @@ public class ActionSheet extends Fragment {
         }, 500);
     }
 
-    public static ActionSheet.Builder build(FragmentManager fragmentManager, TYPE type) {
-        ActionSheet.Builder builder = new ActionSheet.Builder(fragmentManager,type);
+    public static ActionSheetBack.Builder build(FragmentManager fragmentManager) {
+        ActionSheetBack.Builder builder = new ActionSheetBack.Builder(fragmentManager);
         return builder;
     }
 
@@ -257,19 +294,38 @@ public class ActionSheet extends Fragment {
      * 构造器
      */
     public static class Builder {
-        ActionSheet fragment;
+
         FragmentManager fragmentManager;
 
         //默认tag，用来校验fragment是否存在
         String tag = "ActionSheetFragment";
+        // ActionSheet的Title
+        String title = "";
+        // 取消按钮
+        String cancel = "";
+        //ActionSheet上ListView或者GridLayout上相关文字、图片
+        String[] items;
+        int[] images;
+        //ActionSheet点击后的回调
+        OnItemClickListener onItemClickListener;
+        //点击取消之后的回调
+        OnCancelListener onCancelListener;
+        //提供类型，用以区分ListView或者GridLayout
+        TYPE type = TYPE.LIST;
 
-        public Builder(FragmentManager fragmentManager, TYPE type) {
+        public Builder(FragmentManager fragmentManager) {
             this.fragmentManager = fragmentManager;
-            this.fragment = new ActionSheet();
-            this.fragment.type = type;
         }
 
         public void show() {
+            ActionSheetBack fragment;
+            if (type == TYPE.GRID) {
+                fragment = ActionSheetBack.newGridInstance(title, items, images);
+            } else {
+                fragment = ActionSheetBack.newListInstance(title, cancel, items);
+                fragment.setOnCancelListener(onCancelListener);
+            }
+            fragment.setOnItemClickListener(onItemClickListener);
             fragment.show(fragmentManager, tag);
         }
 
@@ -278,54 +334,59 @@ public class ActionSheet extends Fragment {
             return this;
         }
 
-        public Builder setTitle(@StringRes int title) {
-            this.fragment.title = title;
-            return this;
-        }
-
         public Builder setTitle(String title) {
-            this.fragment.titleText = title;
-            return this;
-        }
-
-        public Builder setCancel(@StringRes int cancel) {
-            this.fragment.cancel = cancel;
+            this.title = title;
             return this;
         }
 
         public Builder setCancel(String cancel) {
-            this.fragment.cancelText = cancel;
+            this.cancel = cancel;
             return this;
         }
 
-        public Builder addItem(BaseItem item) {
-            this.fragment.items.add(item);
+        public Builder setItems(String[] items) {
+            this.items = items;
             return this;
         }
 
-        public Builder addItem(List<BaseItem> item) {
-            this.fragment.items.addAll(item);
+        public Builder setImages(int[] images) {
+            this.images = images;
             return this;
         }
 
         public Builder setOnItemClickListener(OnItemClickListener onItemClickListener) {
-            this.fragment.onItemClickListener = onItemClickListener;
+            this.onItemClickListener = onItemClickListener;
             return this;
         }
 
         public Builder setOnCancelListener(OnCancelListener onCancelListener) {
-            this.fragment.onCancelListener = onCancelListener;
+            this.onCancelListener = onCancelListener;
+            return this;
+        }
+
+        public Builder setType(TYPE type) {
+            this.type = type;
             return this;
         }
     }
 
+    OnItemClickListener onItemClickListener;
+    OnCancelListener onCancelListener;
 
     public interface OnCancelListener {
         void onCancelClick();
     }
 
     public interface OnItemClickListener {
-        void onItemClick(int position, BaseItem item);
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public void setOnCancelListener(OnCancelListener onCancelListener) {
+        this.onCancelListener = onCancelListener;
     }
 
     /**
@@ -466,26 +527,26 @@ public class ActionSheet extends Fragment {
 
     public static class Adapter extends BaseAdapter {
         Context context;
-        List<BaseItem> items;
+        String title[];
 
-        public Adapter(Context context, List<BaseItem> items) {
+        public Adapter(Context context, String[] title) {
             this.context = context;
-            this.items = items;
+            this.title = title;
         }
 
         @Override
         public int getCount() {
-            return items.size();
+            return title.length;
         }
 
         @Override
         public Object getItem(int position) {
-            return items.get(position);
+            return title[position];
         }
 
         @Override
         public long getItemId(int position) {
-            return this.items.get(position).getId();
+            return position;
         }
 
         @Override
@@ -499,11 +560,11 @@ public class ActionSheet extends Fragment {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            if(this.items.get(position).getTitle()>0){
-                holder.titleTv.setText(this.items.get(position).getTitle());
-            } else {
-                holder.titleTv.setText(this.items.get(position).getTitleText());
-            }
+//            TypedArray array = context.obtainStyledAttributes(null, R.styleable.f_cvl_action_sheet_params, R.attr.FCVLActionSheetThemeStyle, 0);
+//            array.recycle();
+//            holder.titleTv.setTextColor(array.getColor(R.styleable.f_cvl_action_sheet_params_textColor, Color.BLACK));
+//            holder.titleTv.setTextSize(array.getDimensionPixelSize(R.styleable.f_cvl_action_sheet_params_textSize, 10));
+            holder.titleTv.setText(title[position]);
             return convertView;
         }
 
