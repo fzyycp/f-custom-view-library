@@ -7,8 +7,8 @@ android {
     defaultConfig {
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 45
-        versionName "0.4.5"
+        versionCode 46
+        versionName "0.4.6"
     }
 
     buildTypes {
@@ -29,7 +29,7 @@ dependencies {
     //noinspection GradleDependency
     implementation 'com.android.support:design:27.0.2'
     implementation 'com.github.promeg:tinypinyin:2.0.3'
-    implementation 'cn.faury.android.library:f-android-common-library:0.1.9'
+    implementation 'cn.faury.android.library:f-android-common-library:0.2.5'
 }
 
 uploadArchives {
@@ -39,7 +39,7 @@ uploadArchives {
         repository(url:"http://128.0.9.253:8081/nexus/content/repositories/releases/"){
             authentication(userName:NEXUS_USERNAME,password:NEXUS_PASSWORD)
         }
-        pom.version  = "0.4.5"
+        pom.version  = "0.4.6"
         pom.artifactId = "f-custom-view-library"
         pom.groupId = "cn.faury.android.library"
         pom.name = "f-custom-view-library"
@@ -55,7 +55,7 @@ publish {
     dryRun = false
     groupId = 'cn.faury.android.library'//jcenter上的路径
     artifactId = 'f-custom-view-library'//项目名称
-    publishVersion = '0.4.5'//版本号
+    publishVersion = '0.4.6'//版本号
     desc = 'this is an andriod custom view library'//描述，不重要
     website = 'https://github.com/fzyycp/f-custom-view-library'//github上的地址
 }
