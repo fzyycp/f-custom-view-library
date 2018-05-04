@@ -50,3 +50,4 @@ local.properties
 .idea
 build
 f-custom-view-library.iml
+*.iml

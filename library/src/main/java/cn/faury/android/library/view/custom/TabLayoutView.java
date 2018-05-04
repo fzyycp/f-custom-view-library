@@ -25,6 +25,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.faury.android.library.common.helper.Logger;
+
 /**
  *
  */
@@ -58,7 +60,7 @@ public class TabLayoutView extends LinearLayout {
 
     public TabLayoutView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        if (context instanceof FragmentActivity){
+        if (context instanceof FragmentActivity) {
             this.context = (FragmentActivity) context;
             initViews(attrs);
         } else {
@@ -180,10 +182,13 @@ public class TabLayoutView extends LinearLayout {
      */
     public static class Item implements Serializable {
         private int id;
-        private @LayoutRes int layoutId;
-        private @StringRes int title;
+        private @LayoutRes
+        int layoutId;
+        private @StringRes
+        int title;
         private String titleText;
-        private @DrawableRes int icon;
+        private @DrawableRes
+        int icon;
 
         public Item(int id, int layoutId, int title) {
             this.id = id;
@@ -197,12 +202,12 @@ public class TabLayoutView extends LinearLayout {
             this.titleText = title;
         }
 
-        public Item(int id, int layoutId, int title,int icon) {
+        public Item(int id, int layoutId, int title, int icon) {
             this(id, layoutId, title);
             this.icon = icon;
         }
 
-        public Item(int id, int layoutId, String title,int icon) {
+        public Item(int id, int layoutId, String title, int icon) {
             this(id, layoutId, title);
             this.icon = icon;
         }
@@ -284,12 +289,13 @@ public class TabLayoutView extends LinearLayout {
 
         /**
          * 配置视图创建监听器
+         *
          * @param listener 监听器
          * @return 当前对象
          */
         public Adapter setOnCreateViewListener(OnCreateViewListener listener) {
             this.listener = listener;
-            for (Map.Entry<Integer,ContentFragment> entry:this.fragments.entrySet()){
+            for (Map.Entry<Integer, ContentFragment> entry : this.fragments.entrySet()) {
                 entry.getValue().setOnCreateViewListener(listener);
             }
             return this;
@@ -349,17 +355,23 @@ public class TabLayoutView extends LinearLayout {
      * 页面Fragment
      */
     public static class ContentFragment extends Fragment {
+        private static final String BUNDLE_KEY = "ITEM";
         private Item item;
         private OnCreateViewListener listener;
 
         public static ContentFragment newInstance(Item item) {
             ContentFragment fragment = new ContentFragment();
             fragment.item = item;
+            // 保存数据用户系统恢复Fragment
+            Bundle data = new Bundle();
+            data.putSerializable(BUNDLE_KEY, item);
+            fragment.setArguments(data);
             return fragment;
         }
 
         /**
          * 配置视图创建监听器
+         *
          * @param listener 监听器
          * @return 当前对象
          */
@@ -371,6 +383,15 @@ public class TabLayoutView extends LinearLayout {
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            if (item == null) {
+                Bundle data = getArguments();
+                if (data != null && data.get(BUNDLE_KEY) instanceof Item) {
+                    item = (Item) data.get(BUNDLE_KEY);
+                }
+            }
+            if (item == null) {
+                return null;
+            }
             View contentView = inflater.inflate(item.getLayoutId(), null);
             if (listener != null) {
                 listener.onCreateView(item.getId(), item, contentView);

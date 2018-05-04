@@ -54,6 +54,9 @@ public class CircleImageView extends ImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        if (getDrawable() == null) {
+            return;
+        }
         Paint paint = new Paint();
         Bitmap bitmap = drawableToBitmap(getDrawable());
 

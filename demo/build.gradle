@@ -31,7 +31,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'cn.faury.android.library:f-android-common-library:0.2.5'
-    compile project(':library')
+    implementation project(':library')
 
     // 依赖注入插件
     implementation 'com.jakewharton:butterknife:8.8.1'

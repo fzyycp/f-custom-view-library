@@ -7,8 +7,8 @@ android {
     defaultConfig {
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 46
-        versionName "0.4.6"
+        versionCode 48
+        versionName "0.4.8"
     }
 
     buildTypes {
@@ -39,7 +39,7 @@ uploadArchives {
         repository(url:"http://128.0.9.253:8081/nexus/content/repositories/releases/"){
             authentication(userName:NEXUS_USERNAME,password:NEXUS_PASSWORD)
         }
-        pom.version  = "0.4.6"
+        pom.version  = "0.4.8"
         pom.artifactId = "f-custom-view-library"
         pom.groupId = "cn.faury.android.library"
         pom.name = "f-custom-view-library"
@@ -55,7 +55,7 @@ publish {
     dryRun = false
     groupId = 'cn.faury.android.library'//jcenter上的路径
     artifactId = 'f-custom-view-library'//项目名称
-    publishVersion = '0.4.6'//版本号
+    publishVersion = '0.4.8'//版本号
     desc = 'this is an andriod custom view library'//描述，不重要
     website = 'https://github.com/fzyycp/f-custom-view-library'//github上的地址
 }
