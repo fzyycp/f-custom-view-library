@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -11,12 +12,12 @@ import android.widget.TextView;
  * 通用头部导航视图
  */
 
-public class CommonTopView extends RelativeLayout {
+public class CommonTopView extends LinearLayout {
 
     /**
      * 整个头部布局
      */
-    private RelativeLayout layout;
+    private LinearLayout layout;
 
     /**
      * 左侧图片按钮
@@ -85,7 +86,7 @@ public class CommonTopView extends RelativeLayout {
      * 获取布局Layout
      * @return Layout
      */
-    public RelativeLayout getLayout() {
+    public LinearLayout getLayout() {
         return layout;
     }
 
@@ -140,7 +141,7 @@ public class CommonTopView extends RelativeLayout {
          *
          * @param layout 导航栏
          */
-        void initCommonTopLayout(final RelativeLayout layout);
+        void initCommonTopLayout(final LinearLayout layout);
 
         /**
          * 初始化左侧图片按钮

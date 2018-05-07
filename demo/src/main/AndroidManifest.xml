@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActionSheetActivity" />
-        <activity android:name=".TabLayoutActivity"></activity>
+        <activity android:name=".TabLayoutActivity" />
+        <activity android:name=".CommonTopViewActivity"></activity>
     </application>
 
 </manifest>

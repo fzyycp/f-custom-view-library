@@ -10,11 +10,11 @@
     <!-- 头部左右文字宽度 -->
     <dimen name="f_cvl_common_top_view_lr_tv_width">60dp</dimen>
     <!-- 头部左右文字外边距 -->
-    <dimen name="f_cvl_common_top_view_lr_tv_margin">8dp</dimen>
+    <dimen name="f_cvl_common_top_view_lr_tv_margin">4dp</dimen>
     <!-- 头部左右文字大小 -->
     <dimen name="f_cvl_common_top_view_lr_tv_size">14sp</dimen>
     <!-- 头部中部文字内边距 -->
-    <dimen name="f_cvl_common_top_view_center_tv_padding">44dp</dimen>
+    <dimen name="f_cvl_common_top_view_center_tv_padding">4dp</dimen>
     <!-- 头部中部文字大小 -->
     <dimen name="f_cvl_common_top_view_center_tv_size">20sp</dimen>
 

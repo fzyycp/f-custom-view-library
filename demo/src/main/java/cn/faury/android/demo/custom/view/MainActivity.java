@@ -21,6 +21,10 @@ public class MainActivity extends Activity {
         Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
     }
 
+    @OnClick(R.id.common_top_view_btn)
+    public void commonTopViewBtnClick() {
+        ActivityUtils.startActivity(this, CommonTopViewActivity.class,null);
+    }
 
     @OnClick(R.id.action_sheet_btn)
     public void actionSheetBtnClick() {
