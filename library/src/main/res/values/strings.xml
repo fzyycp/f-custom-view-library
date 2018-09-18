@@ -1,5 +1,7 @@
 <resources>
     <string name="f_cvl_common_top_view_center_default_text">Title</string>
     <string name="f_cvl_item_recycler_view_load_done_tips">已全部加载</string>
-    <string name="f_cvl_pull_recycler_view_load_more_footer_tips">正在加载中...</string>
+    <string name="f_cvl_pull_recycler_view_load_more_footer_tips">正在加载中…</string>
+    <string name="f_cvl_common_text_watcher_unsupported_character">不支持表情符号</string>
+    <string name="f_cvl_common_text_watcher_max_length">最多输入%d个字符</string>
 </resources>

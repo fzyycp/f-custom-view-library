@@ -1,5 +1,6 @@
 package cn.faury.android.library.view.custom;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -19,6 +20,7 @@ import android.widget.ImageView;
  * 圆形图片
  */
 
+@SuppressLint("AppCompatCustomView")
 public class CircleImageView extends ImageView {
 
     /**

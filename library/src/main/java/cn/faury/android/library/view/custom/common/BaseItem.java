@@ -1,5 +1,6 @@
 package cn.faury.android.library.view.custom.common;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 
@@ -42,7 +43,7 @@ public class BaseItem implements Serializable {
      * @param id    项目ID
      * @param title 项目内容ID
      */
-        public BaseItem(int id, @StringRes int title) {
+    public BaseItem(int id, @StringRes int title) {
         this.id = id;
         this.title = title;
     }
@@ -53,7 +54,7 @@ public class BaseItem implements Serializable {
      * @param id    项目ID
      * @param title 项目内容
      */
-        public BaseItem(int id, String title) {
+    public BaseItem(int id, String title) {
         this.id = id;
         this.titleText = title;
     }
@@ -65,7 +66,8 @@ public class BaseItem implements Serializable {
      * @param iconId 图标ID(小于等于0不显示)
      * @param title  项目内容ID
      */
-        public BaseItem(int id, @DrawableRes int iconId, @StringRes int title) {
+    @SuppressLint("ResourceType")
+    public BaseItem(int id, @DrawableRes int iconId, @StringRes int title) {
         this.id = id;
         if (iconId > 0) {
             this.icon = iconId;
@@ -81,7 +83,8 @@ public class BaseItem implements Serializable {
      * @param iconId 图标ID(小于等于0不显示)
      * @param title  项目内容
      */
-        public BaseItem(int id, @DrawableRes int iconId, String title) {
+    @SuppressLint("ResourceType")
+    public BaseItem(int id, @DrawableRes int iconId, String title) {
         this.id = id;
         if (iconId > 0) {
             this.icon = iconId;

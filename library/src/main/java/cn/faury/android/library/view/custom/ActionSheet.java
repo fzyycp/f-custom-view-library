@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -121,6 +122,7 @@ public class ActionSheet extends Fragment {
     }
 
     // 初始化表格框
+    @SuppressLint("ResourceType")
     private void initGridViews() {
         GridLayout gridGl = rootView.findViewById(R.id.f_cvl_action_sheet_grid_gl);
         gridGl.setVisibility(View.VISIBLE);
@@ -488,6 +490,7 @@ public class ActionSheet extends Fragment {
             return this.items.get(position).getId();
         }
 
+        @SuppressLint("ResourceType")
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ViewHolder holder;

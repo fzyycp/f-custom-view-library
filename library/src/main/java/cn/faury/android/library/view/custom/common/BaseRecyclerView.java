@@ -1,5 +1,6 @@
 package cn.faury.android.library.view.custom.common;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
@@ -340,6 +341,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
             return new ViewHolder(view);
         }
 
+        @SuppressLint("ResourceType")
         @Override
         public void onBindViewHolder(final BaseRecyclerView.ViewHolder holder, int position) {
             final BaseRecyclerView.Item item = this.items.get(position);
@@ -662,6 +664,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
          * @param moreId 更多按钮ID(小于等于0不显示)
          * @param place  placehold内容
          */
+        @SuppressLint("ResourceType")
         public Item(int id, @DrawableRes int iconId, @StringRes int title, @DrawableRes int moreId, @StringRes int place) {
             super(id,iconId,title);
             if (moreId > 0) {
@@ -682,6 +685,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
          * @param moreId 更多按钮ID(小于等于0不显示)
          * @param place  placehold内容
          */
+        @SuppressLint("ResourceType")
         public Item(int id, @DrawableRes int iconId, @StringRes int title, @DrawableRes int moreId, String place) {
             super(id,iconId,title);
             if (moreId > 0) {
@@ -702,6 +706,7 @@ public abstract class BaseRecyclerView extends RelativeLayout {
          * @param moreId 更多按钮ID(小于等于0不显示)
          * @param place  placehold内容
          */
+        @SuppressLint("ResourceType")
         public Item(int id, @DrawableRes int iconId, String title, @DrawableRes int moreId, String place) {
             super(id,iconId,title);
             if (moreId > 0) {

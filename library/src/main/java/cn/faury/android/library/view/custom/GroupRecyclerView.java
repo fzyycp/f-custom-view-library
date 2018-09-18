@@ -1,5 +1,6 @@
 package cn.faury.android.library.view.custom;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -142,6 +143,7 @@ public class GroupRecyclerView extends BaseRecyclerView {
              * @param data 列表项
              * @return 排序字段
              */
+            @SuppressLint("ResourceType")
             @Override
             public String sortField(Item data) {
                 if (data != null) {

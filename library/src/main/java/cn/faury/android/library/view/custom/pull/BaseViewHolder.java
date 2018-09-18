@@ -150,9 +150,9 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
     }
 
     /**
-     * Will download an image from a URL and put it in an ImageView.<br/>
-     * It uses Square's Picasso library to download the image asynchronously and put the result into the ImageView.<br/>
-     * Picasso manages recycling of views in a ListView.<br/>
+     * Will download an image from a URL and put it in an ImageView.
+     * It uses Square's Picasso library to download the image asynchronously and put the result into the ImageView.
+     * Picasso manages recycling of views in a ListView.
      * If you need more control over the Picasso settings, use {BaseViewHolder#setImageBuilder}.
      *
      * @param viewId   The view id.

@@ -1,6 +1,7 @@
 package cn.faury.android.library.view.custom;
 
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -232,6 +233,7 @@ public class PopupMenu {
      * @param style 设置动画
      * @return 当前对象
      */
+    @SuppressLint("ResourceType")
     public PopupMenu animationStyle(@StyleRes int style) {
         if (style > 0) {
             this.animationStyle = style;
